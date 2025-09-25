@@ -1,0 +1,28 @@
+h1{
+    margin-top: 3%;
+    font-size: xx-large;
+}
+
+#articlesList li{
+    background-color: transparent;
+    box-shadow: 0px 8px 8px -6px rgba(0,0,0,.5);
+    margin: 15px;
+    padding: 0.75rem;
+    border-radius: 10px;
+}
+
+#articlesList li:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.navigateBack{
+    padding: 5px;
+    background-color: darkgray;
+    color: black;
+    border-radius: 5px;
+}
+
+.navigateBack:hover{
+    cursor: pointer;
+}
