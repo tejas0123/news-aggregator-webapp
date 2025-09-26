@@ -1,22 +1,22 @@
 #articlePage {
-    margin-top: 5%;
-    h1{
-        font-size: x-large;
-    }
+  margin-top: 5%;
+  h1 {
+    font-size: x-large;
+  }
 
-    img{
-        margin-top: 2%;
-    }
+  img {
+    margin-top: 2%;
+  }
 
-    a{
-        color: blue;
-    }
+  a {
+    color: blue;
+  }
 
-    .articleHeader{
-        margin-top: 3%;
-    }
+  .articleHeader {
+    margin-top: 3%;
+  }
 
-    .articleContent{
-        margin-top: 2%;
-    }
+  .articleContent {
+    margin-top: 2%;
+  }
 }

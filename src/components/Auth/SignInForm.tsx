@@ -1,20 +1,25 @@
-import Navbar from "../Navbar/Navbar"
-import "./SignInForm.css"
+import Navbar from '../Navbar/Navbar';
+import './SignInForm.css';
+import { Link } from 'react-router-dom';
 
 export default function SignInForm() {
-
   return (
     <>
-    <Navbar/>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <Navbar />
+      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-black">Sign in to your account</h2>
+          <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-black">
+            Sign in to your account
+          </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form action="#" method="POST" className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-100">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-black"
+              >
                 Email address
               </label>
               <div className="mt-2">
@@ -24,18 +29,24 @@ export default function SignInForm() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                  className="block w-full rounded-md border border-gray-300 px-3 py-2 text-base text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-100">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-black"
+                >
                   Password
                 </label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">
+                  <a
+                    href="#"
+                    className="font-semibold text-indigo-600 hover:text-indigo-500"
+                  >
                     Forgot password?
                   </a>
                 </div>
@@ -47,7 +58,7 @@ export default function SignInForm() {
                   type="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                  className="block w-full rounded-md border border-gray-300 px-3 py-2 text-base text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
@@ -55,21 +66,24 @@ export default function SignInForm() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </button>
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-400">
+          <p className="mt-10 text-center text-sm text-gray-600">
             Not a member?{' '}
-            <a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">
-                Create an Account
-            </a>
+            <Link
+              to="/signup"
+              className="font-semibold text-indigo-600 hover:text-indigo-500"
+            >
+              Create an Account
+            </Link>
           </p>
         </div>
       </div>
     </>
-  )
+  );
 }
