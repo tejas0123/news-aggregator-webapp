@@ -1,5 +1,6 @@
 import { type AxiosRequestConfig } from 'axios';
 import executeRequest from '../utils/HttpClient';
+
 const fetchNewsArticles = async (category: string) => {
   const requestConfig: AxiosRequestConfig = {
     method: 'get',
@@ -12,7 +13,6 @@ const fetchNewsArticles = async (category: string) => {
 
   const response = await executeRequest(requestConfig);
 
-  console.log(response);
   return response.data.articles;
 };
 

@@ -1,8 +1,43 @@
+import { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import './SignInForm.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import type { UserCredentials } from '../../types/userCredentials';
+import login from '../../services/auth/login';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function SignInForm() {
+  const [userCredentials, setUserCredentials] = useState<UserCredentials>({
+    email: '',
+    password: '',
+  });
+
+  const { currentUser } = useAuth();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setUserCredentials((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    console.log(userCredentials);
+    const response = await login(userCredentials);
+    if (response?.data.isOperationSuccessful) {
+      console.log(response.data.message);
+      currentUser({ email: userCredentials.email });
+      navigate('/');
+    } else {
+      console.log('Login Unsuccessful', response?.data.message);
+      navigate('/login');
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -14,7 +49,7 @@ export default function SignInForm() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
@@ -27,6 +62,8 @@ export default function SignInForm() {
                   id="email"
                   name="email"
                   type="email"
+                  value={userCredentials.email}
+                  onChange={handleInputChange}
                   required
                   autoComplete="email"
                   className="block w-full rounded-md border border-gray-300 px-3 py-2 text-base text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -56,6 +93,8 @@ export default function SignInForm() {
                   id="password"
                   name="password"
                   type="password"
+                  value={userCredentials.password}
+                  onChange={handleInputChange}
                   required
                   autoComplete="current-password"
                   className="block w-full rounded-md border border-gray-300 px-3 py-2 text-base text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -72,7 +111,6 @@ export default function SignInForm() {
               </button>
             </div>
           </form>
-
           <p className="mt-10 text-center text-sm text-gray-600">
             Not a member?{' '}
             <Link

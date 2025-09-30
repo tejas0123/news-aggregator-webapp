@@ -1,17 +1,13 @@
-import type { UserCredentials } from '../../types/userCredentials';
 import { type AxiosRequestConfig } from 'axios';
 import executeRequest from '../../utils/HttpClient';
 
-const login = async (userCredentials: UserCredentials) => {
+const fetchServerDetails = async () => {
   const requestConfig: AxiosRequestConfig = {
-    method: 'post',
-    url: 'http://localhost:8080/news-aggregator/login',
-    data: {
-      email: userCredentials.email,
-      password: userCredentials.password,
-    },
+    method: 'get',
+    url: 'http://localhost:8080/news-aggregator/api/v1/admin/server',
     withCredentials: true,
   };
+
   try {
     const response = await executeRequest(requestConfig);
     return response;
@@ -20,4 +16,4 @@ const login = async (userCredentials: UserCredentials) => {
   }
 };
 
-export default login;
+export default fetchServerDetails;
